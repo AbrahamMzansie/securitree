@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import ShowSpinner from "../../../components/UI/Spinner";
+import AlertMessage from "../../../components/UI/AlertMessage";
 import KeyPress from "../../../components/UI/KeyPress";
 import { useHistory } from "react-router-dom";
 import {
@@ -13,7 +14,10 @@ import {
   Card,
 } from "react-bootstrap";
 
-import { getAllUnlockedDoors , lockDoor } from "../../../actions/hierarchyActions";
+import {
+  getAllUnlockedDoors,
+  lockDoor,
+} from "../../../actions/hierarchyActions";
 
 const LockDoor = () => {
   const history = useHistory();
@@ -22,22 +26,27 @@ const LockDoor = () => {
 
   const dispatch = useDispatch();
   const hierarchy = useSelector((state) => state.hierarchy);
-  
 
   useEffect(() => {
     dispatch(getAllUnlockedDoors());
     setAllLockedDoors(hierarchy.unLockedDoors);
   }, [allLockedDoors]);
 
-  KeyPress('Escape', () => {
+  KeyPress("Escape", () => {
     history.push("/manage-doors");
   });
-  
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (doorID) {
         dispatch(lockDoor(doorID));
-        
+        console.log(hierarchy.lockedDoor);
+        if (!Object.keys(hierarchy.lockedDoor).length === 0) {
+          setDoorID("");
+          history.push(
+            `/${hierarchy.lockedDoor.id}/${hierarchy.lockedDoor.status}/doorDetails`
+          );
+        }
       }
     }, 1000);
     return () => {
@@ -111,13 +120,17 @@ const LockDoor = () => {
                 </InputGroup>
                 {hierarchy.loading ? (
                   <ShowSpinner
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItem: "center",
-                  }}
-                />
-                ) : (null)}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItem: "center",
+                    }}
+                  />
+                ) : (
+                  hierarchy.error && (
+                    <AlertMessage variant="danger" message={hierarchy.error} />
+                  )
+                )}
               </Card.Text>
             </Card.Body>
           </Card>

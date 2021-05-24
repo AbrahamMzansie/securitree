@@ -37,7 +37,7 @@ const DoorDetails = (props) => {
           <Card>
             <Card.Header>Lock Door</Card.Header>
             <Card.Body>
-              <Card.Title>`Door ${props.doorId} ${props.status}`</Card.Title>
+              <Card.Title>{`Door ${props.match.params.doorId} ${props.match.params.doorStatus}`}</Card.Title>
               <h6>Press ENTER to return to the main menu</h6>
             </Card.Body>
           </Card>

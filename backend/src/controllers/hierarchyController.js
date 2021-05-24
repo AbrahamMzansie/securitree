@@ -94,7 +94,7 @@ const retriveDoors = (doors, parent_area) => {
   }
   let doorList = `[Door] ${doorDescription}`;
   doorList = doorList.slice(0, -1);
-  
+
   return { relatedDoorList, doorList };
 };
 const retriveAccessRules = (doors, accessRules) => {
@@ -203,6 +203,8 @@ const updateUnlockedDoor = async (req, res) => {
       if (error) return res.status(400).json({ error });
       if (lockedDoor) {
         return res.status(200).json({ lockedDoor });
+      } else {
+        return res.status(400).json({ message: "Door not found" });
       }
     }
   );
@@ -217,6 +219,8 @@ const updateLockedDoor = async (req, res) => {
       if (error) return res.status(400).json({ error });
       if (unLockedDoor) {
         return res.status(200).json({ unLockedDoor });
+      } else {
+        return res.status(400).json({ message: "Door not found" });
       }
     }
   );

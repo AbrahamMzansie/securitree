@@ -12,6 +12,7 @@ import ManageDoor from "./containers/ManageDoor";
 import UnlockDoor from "./containers/ManageDoor/UnlockDoor";
 import LockDoor  from "./containers/ManageDoor/LockDoor";
 import DoorDetails from "./containers/ManageDoor/DoorDetails";
+//import { getAllHierarchy } from "./actions/hierarchyActions";
 
 function App() {
   const dispatch = useDispatch();
