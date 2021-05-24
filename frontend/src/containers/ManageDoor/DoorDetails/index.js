@@ -12,11 +12,13 @@ const DoorDetails = () => {
   const hierarchy = useSelector((state) => state.hierarchy);
 
   KeyPress("Enter", () => {
-    
     const page = "/";
 
     history.push(page);
   });
+  const renderHeader = () => {
+    let results = null;
+  };
   const renderData = () => {
     let data = null;
     if (hierarchy.loading) {
@@ -53,7 +55,14 @@ const DoorDetails = () => {
       >
         <Col md={{ span: 6, offset: 12 }}>
           <Card>
-            <Card.Header>Lock Door</Card.Header>
+            {hierarchy.loading ? null : (
+              <Card.Header>{
+                hierarchy && hierarchy.doorDetals && hierarchy.doorDetals.status ? (
+                hierarchy && hierarchy.doorDetals && hierarchy.doorDetals.status
+                === "closed" ? "Lock Door" : "Unlock Door") : ("Error Occured")}
+              </Card.Header>
+            )}
+
             <Card.Body>
               {renderData()}
               <h6>Press ENTER to return to the main menu</h6>
