@@ -118,6 +118,9 @@ export const lockDoor = (doorId) => {
           type: lockDoorConstants.LOCK_DOOR_SUCCESS,
           payload: { lockedDoor: lockedDoor },
         });
+        history.push(
+          `/${lockedDoor.id}/${lockedDoor.status}/doorDetails`
+        );
       }
     } catch (error) {
       dispatch({

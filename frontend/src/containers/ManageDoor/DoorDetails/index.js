@@ -2,26 +2,43 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import ShowSpinner from "../../../components/UI/Spinner";
+import AlertMessage from "../../../components/UI/AlertMessage";
 import KeyPress from "../../../components/UI/KeyPress";
 import { useHistory } from "react-router-dom";
-import {
-  Col,
-  Row,
-  Card,
-} from "react-bootstrap";
-import { getAllUnlockedDoors , lockDoor } from "../../../actions/hierarchyActions";
+import { Col, Row, Card } from "react-bootstrap";
 
 const DoorDetails = (props) => {
-    console.log(props);
+  console.log(props);
   const history = useHistory();
 
   const dispatch = useDispatch();
   const hierarchy = useSelector((state) => state.hierarchy);
-  
 
-  KeyPress('Enter', () => {
-    history.push("/manage-doors");
+  KeyPress("Enter", () => {
+    history.push("/lock-doors");
   });
+  const renderData = () => {
+    let data = null;
+    if (hierarchy.loading) {
+      data = (
+        <ShowSpinner
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItem: "center",
+          }}
+        />
+      );
+    } else if (hierarchy.error) {
+      data = <AlertMessage variant="danger" message={hierarchy.error} />;
+    } else if (hierarchy && hierarchy.lockedDoor) {
+      const status = hierarchy.lockedDoor.status === "closed" ? "LOCKED" : "UNLOCKED";
+      data = (
+        <Card.Title>{`Door ${hierarchy.lockedDoor.id} ${status}`}</Card.Title>
+      );
+    }
+    return data;
+  };
 
   return (
     <Layout manageDoors>
@@ -37,7 +54,7 @@ const DoorDetails = (props) => {
           <Card>
             <Card.Header>Lock Door</Card.Header>
             <Card.Body>
-              <Card.Title>{`Door ${props.match.params.doorId} ${props.match.params.doorStatus}`}</Card.Title>
+              {renderData()}
               <h6>Press ENTER to return to the main menu</h6>
             </Card.Body>
           </Card>

@@ -76,6 +76,7 @@ const Hierarchy = () => {
                         expandOpen: <IoIosArrowDown />,
                       }}
                     />
+                    <br/>
                   </>
                 )}
               </>

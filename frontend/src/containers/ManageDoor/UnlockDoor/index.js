@@ -37,13 +37,10 @@ const UnlockDoor = () => {
     const timeout = setTimeout(() => {
       if (doorID) {
         dispatch(unLockDoor(doorID));
-        console.log(hierarchy.unLockedDoor);
-        if (!Object.keys(hierarchy.unLockedDoor).length === 0) {
           setDoorID("");
           history.push(
             `/${hierarchy.unLockedDoor.id}/${hierarchy.unLockedDoor.status}/doorDetails`
           );
-        }
       }
     }, 1000);
     return () => {

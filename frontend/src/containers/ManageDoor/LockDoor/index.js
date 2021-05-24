@@ -40,8 +40,7 @@ const LockDoor = () => {
     const timeout = setTimeout(() => {
       if (doorID) {
         dispatch(lockDoor(doorID));
-        console.log(hierarchy.lockedDoor);
-        if (!Object.keys(hierarchy.lockedDoor).length === 0) {
+        if (!hierarchy.loading) {
           setDoorID("");
           history.push(
             `/${hierarchy.lockedDoor.id}/${hierarchy.lockedDoor.status}/doorDetails`
