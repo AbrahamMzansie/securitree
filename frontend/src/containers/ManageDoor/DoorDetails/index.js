@@ -12,8 +12,7 @@ const DoorDetails = () => {
   const hierarchy = useSelector((state) => state.hierarchy);
 
   KeyPress("Enter", () => {
-    console.log(hierarchy);
-    console.log(hierarchy.doorDetals.status);
+    
     const page = "/";
 
     history.push(page);

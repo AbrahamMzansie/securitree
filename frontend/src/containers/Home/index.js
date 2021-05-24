@@ -22,7 +22,7 @@ const Home = () => {
           <Link to="/hierarchy">View Security Entity Hierarchy : </Link> Opens the SecurityEntityHierarchy screen
         </ListGroup.Item>
         <ListGroup.Item as="li"><Link to="/manage-doors">Manage Doors :</Link> Opens the Manage Doorsscreen</ListGroup.Item>
-        <ListGroup.Item as="li" onClick =  {signOutHandler}><Link onClick = {signOutHandler}>Sign Out :</Link> Logs the user out of the applicationand redirects the userbackto the Login screen</ListGroup.Item>
+        <ListGroup.Item as="li" onClick =  {signOutHandler}><Link to = "" onClick = {signOutHandler}>Sign Out :</Link> Logs the user out of the applicationand redirects the userbackto the Login screen</ListGroup.Item>
       </ListGroup>
     </Layout>
   );

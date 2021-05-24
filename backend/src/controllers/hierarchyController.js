@@ -20,10 +20,10 @@ const createHierarchy = (req, res) => {
     const hierarchyData = new Hierarchy(hierarchyObj);
     hierarchyData.save((error, hierarchy) => {
       if (error) {
-        console.log(error);
+       
       }
       if (hierarchy) {
-        //  console.log(hierarchy);
+      
       }
     });
   });
@@ -39,10 +39,10 @@ const createHierarchy = (req, res) => {
     const doorData = new Door(doorObj);
     doorData.save((error, door) => {
       if (error) {
-        console.log(error);
+       
       }
       if (door) {
-        //  console.log(door);
+      
       }
     });
   });
@@ -61,10 +61,10 @@ const createHierarchy = (req, res) => {
     const accessRuleData = new AccessRule(accessRuleObj);
     accessRuleData.save((error, accessRule) => {
       if (error) {
-        console.log(error);
+      
       }
       if (accessRule) {
-        //  console.log(accessRule);
+     
       }
     });
   });

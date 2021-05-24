@@ -81,7 +81,6 @@ const LockDoor = () => {
             <Card.Body>
               <Card.Title>Please enter ID of the door to lock</Card.Title>
               <h6>Press ESC to return to door management screen</h6>
-              <Card.Text>
                 <br />
                 <select
                   style={{ marginBottom: "10px" }}
@@ -128,7 +127,6 @@ const LockDoor = () => {
                     <AlertMessage variant="danger" message={hierarchy.error} />
                   )
                 )}
-              </Card.Text>
             </Card.Body>
           </Card>
         </Col>

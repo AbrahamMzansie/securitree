@@ -78,7 +78,7 @@ const UnlockDoor = () => {
             <Card.Body>
               <Card.Title>Please enter ID of the door to unlock</Card.Title>
               <h6>Press ESC to return to door management screen</h6>
-              <Card.Text>
+            
                 <br />
                 <select
                   style={{ marginBottom: "10px" }}
@@ -125,7 +125,7 @@ const UnlockDoor = () => {
                     <AlertMessage variant="danger" message={hierarchy.error} />
                   )
                 )}
-              </Card.Text>
+           
             </Card.Body>
           </Card>
         </Col>

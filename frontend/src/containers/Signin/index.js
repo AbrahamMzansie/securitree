@@ -44,9 +44,9 @@ const Signin = () => {
               <Card.Header>Welcome To Securitree</Card.Header>
               <Card.Body>
                 <Card.Title>Please enter you login credentials to begin</Card.Title>
-                <Card.Text>
                 <Form onSubmit={(e) => userLogin(e)}>
                 <Input
+                 id = "userName"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   type={"text"}
@@ -54,6 +54,7 @@ const Signin = () => {
                   placeholder="userName"
                 />
                 <Input
+                id = "password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
@@ -79,8 +80,6 @@ const Signin = () => {
                   )}
                 </Button>
               </Form>
-                </Card.Text>
-                
               </Card.Body>
             </Card>
              

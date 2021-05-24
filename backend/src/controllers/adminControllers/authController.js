@@ -63,7 +63,7 @@ const signup = (req, res) => {
           });
           _user.save((error, data_) => {
             if (error) {
-              console.log(error);
+             
             }
             if (data_) {
             }
