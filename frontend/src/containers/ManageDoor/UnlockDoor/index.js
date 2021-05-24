@@ -39,7 +39,7 @@ const UnlockDoor = () => {
         dispatch(unLockDoor(doorID));
           setDoorID("");
           history.push(
-            `/${hierarchy.unLockedDoor.id}/${hierarchy.unLockedDoor.status}/doorDetails`
+            `/${hierarchy.doorDetals.id}/${hierarchy.doorDetals.status}/doorDetails`
           );
       }
     }, 1000);

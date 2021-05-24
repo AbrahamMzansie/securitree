@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      
     },
     userName: {
       type: String,
@@ -22,7 +21,7 @@ const userSchema = new mongoose.Schema(
       index: true,
       lowercase: true,
     },
-   
+
     hash_password: {
       type: String,
       require: true,
@@ -32,20 +31,12 @@ const userSchema = new mongoose.Schema(
       enum: ["customer", "admin", "user"],
       default: "user",
     },
-    
   },
   { timestamps: true }
 );
-/*
-userSchema.virtual("password").set(function (password) {
-  this.hash_password = bcrpt.hashSync(password, 10);
-});
-*/
-
-
 
 userSchema.methods = {
-  authenticate:async function (password) {
+  authenticate: async function (password) {
     return await bcrpt.compare(password, this.hash_password);
   },
 };

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../../components/Layout";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ShowSpinner from "../../../components/UI/Spinner";
 import AlertMessage from "../../../components/UI/AlertMessage";
 import KeyPress from "../../../components/UI/KeyPress";
 import { useHistory } from "react-router-dom";
 import { Col, Row, Card } from "react-bootstrap";
 
-const DoorDetails = (props) => {
-  console.log(props);
+const DoorDetails = () => {
   const history = useHistory();
-
-  const dispatch = useDispatch();
   const hierarchy = useSelector((state) => state.hierarchy);
 
   KeyPress("Enter", () => {
-    history.push("/lock-doors");
+    console.log(hierarchy);
+    console.log(hierarchy.doorDetals.status);
+    const page = "/";
+
+    history.push(page);
   });
   const renderData = () => {
     let data = null;
@@ -31,10 +32,11 @@ const DoorDetails = (props) => {
       );
     } else if (hierarchy.error) {
       data = <AlertMessage variant="danger" message={hierarchy.error} />;
-    } else if (hierarchy && hierarchy.lockedDoor) {
-      const status = hierarchy.lockedDoor.status === "closed" ? "LOCKED" : "UNLOCKED";
+    } else if (hierarchy && hierarchy.doorDetals) {
+      const status =
+        hierarchy.doorDetals.status === "closed" ? "LOCKED" : "UNLOCKED";
       data = (
-        <Card.Title>{`Door ${hierarchy.lockedDoor.id} ${status}`}</Card.Title>
+        <Card.Title>{`Door ${hierarchy.doorDetals.id} ${status}`}</Card.Title>
       );
     }
     return data;

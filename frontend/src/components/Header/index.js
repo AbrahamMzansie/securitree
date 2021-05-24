@@ -34,23 +34,19 @@ const Header = ({ manageDoors }) => {
 
   const renderNonLoggedInLink = () => {
     return (
-      <Nav>
+      <Nav style = {{cursor : "pointer"}}>
         <li className="nav-item">
           <NavLink className="nav-link" to="/signin">
             Signin
           </NavLink>
         </li>
-        <li>
-          <NavLink className="nav-link" to="/signup">
-            Signup
-          </NavLink>
-        </li>
+        
       </Nav>
     );
   };
   const renderLoggedInLink = () => {
     return (
-      <Nav>
+      <Nav  style = {{cursor : "pointer"}}>
         {manageDoors ? (
           <>
             <li onClick={() => lockDoorHandler()} className="nav-item">

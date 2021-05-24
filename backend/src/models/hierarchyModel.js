@@ -6,7 +6,7 @@ const doorsSchema = mongoose.Schema({
   status: { type: String },
 });
 const doorSchema = mongoose.Schema({
- id :{ type: String} ,
+  id: { type: String },
 });
 const accessRulesSchema = mongoose.Schema({
   id: { type: String, reqired: true },
@@ -14,7 +14,7 @@ const accessRulesSchema = mongoose.Schema({
   doors: [doorSchema],
 });
 const childAreaSchema = mongoose.Schema({
-  id : { type: String},
+  id: { type: String },
 });
 const hierarchySchema = mongoose.Schema(
   {
@@ -30,10 +30,8 @@ const hierarchySchema = mongoose.Schema(
       type: String,
     },
     child_area_ids: [childAreaSchema],
-    doors : [doorsSchema],
-    access_rules : [accessRulesSchema]
-    
-   
+    doors: [doorsSchema],
+    access_rules: [accessRulesSchema],
   },
   {
     timestamps: true,

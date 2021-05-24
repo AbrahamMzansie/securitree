@@ -10,8 +10,7 @@ const INITIALSTATE = {
   hierarchies: [],
   lockedDoors: [],
   unLockedDoors: [],
-  lockedDoor: {},
-  unLockedDoor : {},
+  doorDetals : {},
 };
 
 export const hierarchyReducer = (state = INITIALSTATE, action) => {
@@ -66,13 +65,13 @@ export const hierarchyReducer = (state = INITIALSTATE, action) => {
         error: null,
         message: null,
         loading: true,
-        lockedDoor: {},
+        doorDetals: {},
       });
     case lockDoorConstants.LOCK_DOOR_SUCCESS:
       return (state = {
         ...state,
         loading: false,
-        lockedDoor: action.payload.lockedDoor,
+        doorDetals: action.payload.lockedDoor,
         unLockedDoors: state.unLockedDoors.filter(
           (door) => door.id !== action.payload.lockedDoor.id
         ),
@@ -91,13 +90,13 @@ export const hierarchyReducer = (state = INITIALSTATE, action) => {
         error: null,
         message: null,
         loading: true,
-        unLockedDoor: {},
+        doorDetals: {},
       });
     case unLockDoorConstants.UNLOCK_DOOR_SUCCESS:
       return (state = {
         ...state,
         loading: false,
-        unLockedDoor: action.payload.unLockedDoor,
+        doorDetals: action.payload.unLockedDoor,
         lockedDoors: state.lockedDoors.filter(
           (door) => door.id !== action.payload.unLockedDoor.id
         ),

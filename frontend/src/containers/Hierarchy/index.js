@@ -48,7 +48,7 @@ const Hierarchy = () => {
         <Row>
           <Col md={12}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h4>Manage Hierarchy</h4>
+              <h4>Entity Hierarchy</h4>
             </div>
           </Col>
         </Row>

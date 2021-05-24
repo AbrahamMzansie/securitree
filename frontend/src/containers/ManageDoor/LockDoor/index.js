@@ -40,12 +40,10 @@ const LockDoor = () => {
     const timeout = setTimeout(() => {
       if (doorID) {
         dispatch(lockDoor(doorID));
-        if (!hierarchy.loading) {
           setDoorID("");
           history.push(
-            `/${hierarchy.lockedDoor.id}/${hierarchy.lockedDoor.status}/doorDetails`
+            `/${hierarchy.doorDetals.id}/${hierarchy.doorDetals.status}/doorDetails`
           );
-        }
       }
     }, 1000);
     return () => {
