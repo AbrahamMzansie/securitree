@@ -1,0 +1,12 @@
+
+.modal-header {
+    padding : 5px 10px ;
+    
+    color: black;
+    font-size: 10px;
+    width: auto;
+}
+.modal_title{
+    font-size: 10px ;
+    color : black;
+}
